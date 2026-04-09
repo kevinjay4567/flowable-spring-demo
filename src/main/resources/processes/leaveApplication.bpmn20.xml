@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:design="http://flowable.org/design" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://flowable.org/test" exporter="Flowable Design" exporterVersion="2025.2.04" design:palette="flowable-work-process-palette">
+  <collaboration id="Collaboration">
+    <participant id="Pool_3" name="Leave application process" processRef="leaveApplication"></participant>
+  </collaboration>
+  <process id="leaveApplication" name="Leave Application" isExecutable="true" flowable:candidateStarterGroups="flowableUser">
+    <documentation>Usign a leave application.</documentation>
+    <extensionElements>
+      <design:stencilid><![CDATA[BPMNDiagram]]></design:stencilid>
+      <design:creationdate><![CDATA[2026-04-06T17:10:34.571Z]]></design:creationdate>
+      <design:description><![CDATA[Usign a leave application.]]></design:description>
+      <design:modificationdate><![CDATA[2026-04-06T17:19:00.242Z]]></design:modificationdate>
+    </extensionElements>
+    <laneSet id="laneSet_leaveApplication">
+      <lane id="Lane_4" name="Employee">
+        <flowNodeRef>FormTask_7</flowNodeRef>
+        <flowNodeRef>StartNoneEvent_6</flowNodeRef>
+        <flowNodeRef>SequenceFlow_10</flowNodeRef>
+        <flowNodeRef>SequenceFlow_9</flowNodeRef>
+      </lane>
+      <lane id="Lane_5" name="Supervisor">
+        <flowNodeRef>FormTask_8</flowNodeRef>
+        <flowNodeRef>EndNoneEvent_11</flowNodeRef>
+        <flowNodeRef>SequenceFlow_12</flowNodeRef>
+      </lane>
+    </laneSet>
+    <userTask id="FormTask_7" name="Request leave" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <startEvent id="StartNoneEvent_6" flowable:initiator="initiator" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:work-form-field-validation><![CDATA[false]]></flowable:work-form-field-validation>
+        <design:stencilid><![CDATA[StartNoneEvent]]></design:stencilid>
+      </extensionElements>
+    </startEvent>
+    <sequenceFlow id="SequenceFlow_10" sourceRef="FormTask_7" targetRef="FormTask_8">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="SequenceFlow_9" sourceRef="StartNoneEvent_6" targetRef="FormTask_7">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="FormTask_8" name="Review request leave" flowable:assignee="${initiator}" flowable:formFieldValidation="false">
+      <extensionElements>
+        <flowable:task-candidates-type><![CDATA[all]]></flowable:task-candidates-type>
+        <design:stencilid><![CDATA[FormTask]]></design:stencilid>
+        <design:stencilsuperid><![CDATA[Task]]></design:stencilsuperid>
+      </extensionElements>
+    </userTask>
+    <endEvent id="EndNoneEvent_11">
+      <extensionElements>
+        <design:stencilid><![CDATA[EndNoneEvent]]></design:stencilid>
+      </extensionElements>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_12" sourceRef="FormTask_8" targetRef="EndNoneEvent_11">
+      <extensionElements>
+        <design:stencilid><![CDATA[SequenceFlow]]></design:stencilid>
+      </extensionElements>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Collaboration">
+    <bpmndi:BPMNPlane bpmnElement="Collaboration" id="BPMNPlane_Collaboration">
+      <bpmndi:BPMNShape bpmnElement="Pool_3" id="BPMNShape_Pool_3">
+        <omgdc:Bounds height="400.0" width="500.0" x="416.0" y="-80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Lane_4" id="BPMNShape_Lane_4">
+        <omgdc:Bounds height="200.0" width="470.0" x="446.0" y="-80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="FormTask_7" id="BPMNShape_FormTask_7">
+        <omgdc:Bounds height="65.0" width="97.0" x="566.0" y="41.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="StartNoneEvent_6" id="BPMNShape_StartNoneEvent_6">
+        <omgdc:Bounds height="30.0" width="30.0" x="509.0" y="-27.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Lane_5" id="BPMNShape_Lane_5">
+        <omgdc:Bounds height="200.0" width="470.0" x="446.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="FormTask_8" id="BPMNShape_FormTask_8">
+        <omgdc:Bounds height="80.0" width="100.0" x="565.0" y="184.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndNoneEvent_11" id="BPMNShape_EndNoneEvent_11">
+        <omgdc:Bounds height="28.0" width="28.0" x="808.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_12" id="BPMNEdge_SequenceFlow_12" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="665.0" y="224.0"></omgdi:waypoint>
+        <omgdi:waypoint x="808.0" y="224.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_9" id="BPMNEdge_SequenceFlow_9" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="49.0" flowable:targetDockerY="33.0">
+        <omgdi:waypoint x="539.0" y="-12.0"></omgdi:waypoint>
+        <omgdi:waypoint x="614.5" y="-12.0"></omgdi:waypoint>
+        <omgdi:waypoint x="614.5" y="41.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_10" id="BPMNEdge_SequenceFlow_10" flowable:sourceDockerX="49.0" flowable:sourceDockerY="33.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="614.5" y="106.0"></omgdi:waypoint>
+        <omgdi:waypoint x="614.5" y="145.0"></omgdi:waypoint>
+        <omgdi:waypoint x="615.0" y="145.0"></omgdi:waypoint>
+        <omgdi:waypoint x="615.0" y="184.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
