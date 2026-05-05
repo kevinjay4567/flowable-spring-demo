@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:flowable="http://flowable.org/bpmn"
+        targetNamespace="Examples">
+<process id="vacationProcess" name="Vacation Approval" isExecutable="true">
+
+    <startEvent id="startEvent"/>
+
+    <userTask id="approveTask" name="Approve Vacation" flowable:assignee="manager"/>
+
+    <exclusiveGateway id="decision"/>
+
+    <sequenceFlow sourceRef="startEvent" targetRef="approveTask"/>
+    <sequenceFlow sourceRef="approveTask" targetRef="decision"/>
+
+    <sequenceFlow sourceRef="decision" targetRef="approvedEnd">
+        <conditionExpression xsi:type="tFormalExpression">
+            ${approved == true}
+        </conditionExpression>
+    </sequenceFlow>
+
+    <sequenceFlow sourceRef="decision" targetRef="rejectedEnd">
+        <conditionExpression xsi:type="tFormalExpression">
+            ${approved == false}
+        </conditionExpression>
+    </sequenceFlow>
+
+    <endEvent id="approvedEnd"/>
+    <endEvent id="rejectedEnd"/>
+
+</process>
+</definitions>
