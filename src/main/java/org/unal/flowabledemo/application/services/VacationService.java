@@ -27,7 +27,6 @@ public class VacationService implements VacationUseCase {
 
         repository.save(request);
 
-        // Inicio del proceso de vacaciones
         Map<String, Object> variables = new HashMap<>();
         variables.put("employee", employee);
         variables.put("days", days);
